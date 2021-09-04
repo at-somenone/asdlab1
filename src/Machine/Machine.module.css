@@ -1,0 +1,15 @@
+
+
+.machine > *, .idkWhatToCallThis > *  {
+    margin: 5px;
+}
+
+.buttonList > * {
+    margin: 5px
+}
+
+.idkWhatToCallThis {
+    display: flex;
+    flex-direction: row;
+}
+
