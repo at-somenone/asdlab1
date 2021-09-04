@@ -8,7 +8,6 @@ type Props = {
     machine: Machine
 }
 
-// todo remove
 const addRandom = (machine: Machine) => {
     const chance = new Chance()
     machine.addPiece({
