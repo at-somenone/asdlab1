@@ -4,16 +4,16 @@ import Keyed from './Keyed'
 import Machine from './Machine/Machine'
 import MachineView from './Machine/MachineView'
 import Piece from './Piece/Piece'
-import ArrayQueue from './Queue/ArrayQueue'
-import LinkedListQueue from './Queue/LinkedListQueue'
+import ObservableArrayQueue from './Queue/ObservableArrayQueue'
+import ObservableLinkedListQueue from './Queue/ObservableLinkedListQueue'
 
 function App() {
     const state = useLocalObservable(() => ({ useArrayQueue: true }))
     const queue = state.useArrayQueue
-        ? new ArrayQueue<Keyed<Piece>>(5)
-        : new LinkedListQueue<Keyed<Piece>>()
+        ? new ObservableArrayQueue<Keyed<Piece>>(5)
+        : new ObservableLinkedListQueue<Keyed<Piece>>()
     const machine = new Machine(queue)
-    console.log(state.useArrayQueue)
+
     return (
         <>
             <input

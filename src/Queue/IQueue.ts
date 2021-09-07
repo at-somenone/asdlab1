@@ -2,7 +2,7 @@ export default interface IQueue<T> {
     enqueue(item: T): void
     dequeue(): T
     peek(): T
-    clear(): void   
+    clear(): void
     length(): number
     isFull(): boolean
     isEmpty(): boolean

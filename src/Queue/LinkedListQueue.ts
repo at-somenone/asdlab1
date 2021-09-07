@@ -1,4 +1,3 @@
-import { makeAutoObservable, observable } from 'mobx'
 import IQueue from './IQueue'
 
 type Node<T> = {
@@ -7,13 +6,9 @@ type Node<T> = {
 }
 
 export default class LinkedListQueue<T> implements IQueue<T> {
-    @observable private firstNode?: Node<T>
-    @observable private lastNode?: Node<T>
+    private firstNode?: Node<T>
+    private lastNode?: Node<T>
     private size = 0
-
-    constructor() {
-        makeAutoObservable(this)
-    }
 
     enqueue(item: T): void {
         const newNode = { item }

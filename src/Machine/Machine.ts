@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable} from 'mobx'
+import { action, computed, makeObservable, observable } from 'mobx'
 import IQueue from '../Queue/IQueue'
 import Piece from '../Piece/Piece'
 import Keyed from '../Keyed'
@@ -33,7 +33,7 @@ export default class Machine {
     @action addPiece(piece: Piece) {
         if (this.isFull) return
         const keyedPiece = { ...piece, key: uuid() }
-        this.pieces.enqueue(keyedPiece)
+        this.pieces.enqueue(observable(keyedPiece))
     }
 
     @computed get anyQueued() {

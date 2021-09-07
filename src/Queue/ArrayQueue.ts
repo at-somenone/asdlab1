@@ -1,4 +1,3 @@
-import { makeAutoObservable } from 'mobx'
 import IQueue from './IQueue'
 
 export default class ArrayQueue<T> implements IQueue<T> {
@@ -11,7 +10,6 @@ export default class ArrayQueue<T> implements IQueue<T> {
         this.array = Array<T>(size + 1)
         this.head = 0
         this.tail = 0
-        makeAutoObservable(this)
     }
 
     enqueue(item: T): void {
@@ -36,7 +34,7 @@ export default class ArrayQueue<T> implements IQueue<T> {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return this.array[this.head]!
     }
-    
+
     clear() {
         this.count = 0
         this.array = Array<T>(this.size + 1)
