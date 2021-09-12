@@ -16,9 +16,6 @@ export default class LinkedListQueue<T> implements IQueue<T> {
         if (!this.firstNode) {
             this.firstNode = newNode
             this.lastNode = newNode
-        } else if (!this.firstNode.next) {
-            this.lastNode = newNode
-            this.firstNode.next = this.lastNode
         } else if (this.lastNode) {
             this.lastNode.next = newNode
             this.lastNode = this.lastNode.next
