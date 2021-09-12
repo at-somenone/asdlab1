@@ -1,14 +1,12 @@
 import { action, computed, makeObservable, observable } from 'mobx'
 import IQueue from '../Queue/IQueue'
 import Piece from '../Piece/Piece'
-import Keyed from '../Keyed'
-import { v4 as uuid } from 'uuid'
 
 export default class Machine {
-    @observable private pieces: IQueue<Keyed<Piece>>
+    @observable private pieces: IQueue<Piece>
     @observable lastProcessed?: Piece
 
-    constructor(queue: IQueue<Keyed<Piece>>) {
+    constructor(queue: IQueue<Piece>) {
         this.pieces = queue
         makeObservable(this)
     }
@@ -32,8 +30,7 @@ export default class Machine {
 
     @action addPiece(piece: Piece) {
         if (this.isFull) return
-        const keyedPiece = { ...piece, key: uuid() }
-        this.pieces.enqueue(observable(keyedPiece))
+        this.pieces.enqueue(observable(piece))
     }
 
     @computed get anyQueued() {
